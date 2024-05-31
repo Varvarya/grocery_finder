@@ -1,6 +1,6 @@
 import axios from "axios";
 import {auth, userInfo} from "../types/authTypes";
-import {baseURL} from "../consts";
+import {baseURL, token} from "../consts";
 
 export const authUser = (userName, password) => async dispatch => {
     try {
@@ -12,6 +12,8 @@ export const authUser = (userName, password) => async dispatch => {
             "userName": "string",
             "password": "string"
         });
+
+        localStorage.setItem(token, res.data.token);
 
         dispatch({
             type: auth.success,

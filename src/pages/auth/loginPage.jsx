@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authUser} from "../../store/actions/authActions";
-import _ from "lodash";
+import './styles.scss'
 import AuthForm from "../../components/AuthForm";
+import {addNewUser} from "../../store/actions/userActions";
+import Button from "../../components/inputs/Button";
+import {useNavigate} from "react-router-dom";
+
 
 const validate = (values) => {
     const errors = {};
@@ -26,28 +30,25 @@ const validate = (values) => {
 };
 
 
-const Auth = (props) => {
+const LoginPage = (props) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const authState = useSelector(state => state.Auth);
 
-    const initialValues = { username: "", email: "", password: "" };
+    const initialValues = { username: "", email: "", password: "", repeatedPassword: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
-
-    useEffect(() => {
-        dispatch(authUser('123', '123'))
-    }, []);
-
-
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors]);
-
+    //
+    // useEffect(() => {
+    //     //dispatch(authUser('123', '123'))
+    //     dispatch(authUser(formValues)).then((res) => {
+    //         console.log(res);
+    //         //navigate('/');
+    //     });
+    // }, [isSubmit]);
 
 
     const handleChange = (e) => {
@@ -59,46 +60,29 @@ const Auth = (props) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
+
+        dispatch(authUser(formValues)).then((res) => {
+            if (!authState.errorMsg) {
+                navigate('/');
+            }
+        });
     };
 
 
-
-    const ShowData = () => {
-
-        if (authState.loading) {
-            return <p>Loading...</p>
-        }
-
-        if (authState.errorMsg !== "") {
-            return <p>{authState.errorMsg}</p>
-        }
-
-
-            return(
-                <div className={"pokemon-wrapper"}>
-                    <div className={"item"}>
-                        <h1>Sprites</h1>
-                    </div>
-                    <div className="item">
-                        <h1>Stats</h1>
-
-                    </div>
-                    <div className="item">
-                        <h1>Abilities</h1>
-                    </div>
-                </div>
-            )
-
-
-
-        return <p>error getting pokemon</p>
-    }
-
     return(
-        <div className={"poke"}>
-           <AuthForm values={formValues} errors={formErrors} handleChange={handleChange.bind(this)} handleSubmit={handleSubmit} isSubmit={isSubmit} />
+        <div className="baseContainer">
+           <AuthForm
+               values={formValues}
+               errors={formErrors}
+               handleChange={handleChange.bind(this)}
+               handleSubmit={handleSubmit}
+               isSubmit={isSubmit}
+           >
+               <Button text={'Submit'} handleClick={handleSubmit}></Button>
+               <Button text={'Login'} type='secondary' handleClick={() => navigate(`/auth/register`)}></Button>
+           </AuthForm>
         </div>
     )
 };
 
-export default Auth
+export default LoginPage
