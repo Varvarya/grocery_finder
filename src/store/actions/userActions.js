@@ -36,7 +36,7 @@ export const addNewUser = (user) => async dispatch => {
             "clientURIForEmailConfirmation": "string"
         }
 
-        const res = await axios.post(`${baseURL}User`, user);
+        const res = await axios.post(`${baseURL}/User`, user);
 
         dispatch({
             type: addUser.success,

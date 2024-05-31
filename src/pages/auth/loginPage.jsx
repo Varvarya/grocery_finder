@@ -25,7 +25,11 @@ const validate = (values) => {
         errors.password = "Password must be more than 4 characters";
     } else if (values.password.length > 10) {
         errors.password = "Password cannot exceed more than 10 characters";
+    } else if (values.password !== values.repeatedPassword) {
+
+        errors.password = "You need to repeat password";
     }
+
     return errors;
 };
 
