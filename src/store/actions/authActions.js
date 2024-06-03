@@ -1,6 +1,6 @@
-import axios from "axios";
 import {auth, userInfo} from "../types/authTypes";
-import {baseURL, token} from "../consts";
+import {baseURL, jwtToken} from "../consts";
+import api from "../api";
 
 export const authUser = (userName, password) => async dispatch => {
     try {
@@ -8,12 +8,12 @@ export const authUser = (userName, password) => async dispatch => {
             type: auth.loading
         });
 
-        const res = await axios.post(`${baseURL}/Auth/token`, {
+        const res = await api.post(`${baseURL}/Auth/token`, {
             "userName": "string",
             "password": "string"
         });
 
-        localStorage.setItem(token, res.data.token);
+        localStorage.setItem(jwtToken, res.data.token);
 
         dispatch({
             type: auth.success,
@@ -33,7 +33,7 @@ export const getCurrentUserInfo = (user) => async dispatch => {
             type: userInfo.loading
         });
 
-        const res = await axios.get(`${baseURL}/Auth/current-user-info`);
+        const res = await api.get(`${baseURL}/Auth/current-user-info`);
 
         dispatch({
             type: userInfo.success,

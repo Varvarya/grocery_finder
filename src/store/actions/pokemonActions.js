@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 
 export const GetPokemonList = (page) => async dispatch => {
   try {
@@ -9,7 +9,7 @@ export const GetPokemonList = (page) => async dispatch => {
     const perPage = 15;
     const offset = (page * perPage) - perPage;
 
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}`)
+    const res = await api.get(`https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}`)
 
     dispatch({
       type: "POKEMON_LIST_SUCCESS",
@@ -28,7 +28,7 @@ export const GetPokemon = (pokemon) => async dispatch => {
       type: "POKEMON_MULTIPLE_LOADING"
     });
 
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    const res = await api.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
     dispatch({
       type: "POKEMON_MULTIPLE_SUCCESS",

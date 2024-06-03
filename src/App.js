@@ -5,6 +5,7 @@ import PokemonList from "./components/PokemonList";
 import Pokemon from "./components/Pokemon";
 import RegistrationPage from "./pages/auth/registrationPage";
 import LoginPage from "./pages/auth/loginPage";
+import HomePage from "./pages/main/home";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
           <Route path={"/auth/register"} element={<RegistrationPage />} />
           <Route path={"/auth/login"} element={<LoginPage />} />
-          <Route path={"/"} element={PokemonList} />
+          <Route path={"/"} element={<HomePage />} />
         <Route path={"/pokemon/:pokemon"} element={Pokemon} />
       </Routes>
     </div>

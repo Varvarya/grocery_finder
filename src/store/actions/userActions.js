@@ -1,7 +1,7 @@
-import axios from "axios";
 import {auth, userInfo} from "../types/authTypes";
 import {baseURL} from "../consts";
 import {addUser, deleteUser, getUser} from "../types/userTypes";
+import api from "../api";
 
 export const getUserByUsername = (userName) => async dispatch => {
     try {
@@ -9,7 +9,7 @@ export const getUserByUsername = (userName) => async dispatch => {
             type: auth.loading
         });
 
-        const res = await axios.get(`${baseURL}/User/${userName}`);
+        const res = await api.get(`${baseURL}/User/${userName}`);
 
         dispatch({
             type: getUser.success,
@@ -36,7 +36,7 @@ export const addNewUser = (user) => async dispatch => {
             "clientURIForEmailConfirmation": "string"
         }
 
-        const res = await axios.post(`${baseURL}/User`, user);
+        const res = await api.post(`${baseURL}/User`, user);
 
         dispatch({
             type: addUser.success,
@@ -64,7 +64,7 @@ export const deleteUserById = (id) => async dispatch => {
             "clientURIForEmailConfirmation": "string"
         }
 
-        const res = await axios.delete(`${baseURL}/User/${id}`);
+        const res = await api.delete(`${baseURL}/User/${id}`);
 
         dispatch({
             type: deleteUser.success,

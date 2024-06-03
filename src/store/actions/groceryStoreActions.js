@@ -1,7 +1,6 @@
-import axios from "axios";
-import {auth, userInfo} from "../types/authTypes";
-import {baseURL, token} from "../consts";
+import {baseURL, jwtToken} from "../consts";
 import {addNewGS, getAllGS, getGSByProduct} from "../types/groceryStoreTypes";
+import api from "../api";
 
 export const getAllGroceryStores = () => async dispatch => {
     try {
@@ -9,7 +8,7 @@ export const getAllGroceryStores = () => async dispatch => {
             type: getAllGS.loading
         });
 
-        const res = await axios.get(`${baseURL}/GroceryStore/get-all`);
+        const res = await api.get(`${baseURL}/GroceryStore/get-all`);
 
          dispatch({
             type: getAllGS.success,
@@ -44,7 +43,7 @@ export const addNewGroceryStore = (store) => async dispatch => {
             "street": "string"
         }
 
-        const res = await axios.get(`${baseURL}/GroceryStore/get-all`);
+        const res = await api.get(`${baseURL}/GroceryStore/get-all`);
 
         dispatch({
             type: addNewGS.success,
@@ -71,7 +70,7 @@ export const searchGroceryStoreByProduct = (params) => async dispatch => {
             GroceryStoreSearchMode: 1
         }
 
-        const res = await axios.get(`${baseURL}/GroceryStore/get-all`, {params});
+        const res = await api.get(`${baseURL}/GroceryStore/get-all`, {params});
 
         dispatch({
             type: getGSByProduct.success,
