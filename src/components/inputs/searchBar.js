@@ -1,31 +1,8 @@
 import React from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
-const SearchBar = () => {
+const SearchBar = ({items}) => {
     // We'll add the logic for handling searches here soon
-
-    const items = [
-        {
-            id: 0,
-            name: 'HTML'
-        },
-        {
-            id: 1,
-            name: 'JavaScript'
-        },
-        {
-            id: 2,
-            name: 'Basic'
-        },
-        {
-            id: 3,
-            name: 'PHP'
-        },
-        {
-            id: 4,
-            name: 'Java'
-        }
-    ];
 
     return (
         <div style={{ width: '100%' }}>

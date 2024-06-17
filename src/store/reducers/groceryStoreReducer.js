@@ -7,8 +7,7 @@ import {addNewGS, getAllGS, getGSByProduct} from "../types/groceryStoreTypes";
 
 const DefaultState = {
     loading: false,
-    data: [],
-    token: '',
+    stores: [],
     errorMsg: ""
 };
 
@@ -36,7 +35,7 @@ const GroceryStoreReducer = (state = DefaultState, action) => {
             return {
                 ...state,
                 loading: false,
-                data: action.payload,
+                stores: action.payload,
                 errorMsg: "",
             };
         default:
@@ -44,4 +43,4 @@ const GroceryStoreReducer = (state = DefaultState, action) => {
     }
 };
 
-export default AuthReducer
+export default GroceryStoreReducer

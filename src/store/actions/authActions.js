@@ -9,8 +9,8 @@ export const authUser = (userName, password) => async dispatch => {
         });
 
         const res = await api.post(`${baseURL}/Auth/token`, {
-            "userName": "string",
-            "password": "string"
+            userName,
+            password
         });
 
         localStorage.setItem(jwtToken, res.data.token);

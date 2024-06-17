@@ -1,40 +1,41 @@
-import {auth, userInfo} from "../types/authTypes";
+
+
+
+
+import { getAllProds, getProdById, addProd } from "../types/productTypes";
 
 const DefaultState = {
     loading: false,
-    currentUser: undefined,
+    products: [],
     token: '',
     errorMsg: ""
 };
 
-const AuthReducer = (state = DefaultState, action) => {
+const ProductReducer = (state = DefaultState, action) => {
     switch (action.type) {
-        case auth.loading:
-        case userInfo.loading:
+        case getAllProds.loading:
+        case getProdById.loading:
+        case addProd.loading:
             return {
                 ...state,
                 loading: true,
                 errorMsg: ""
             };
-        case auth.fail:
-        case userInfo.fail:
+        case getAllProds.fail:
+        case getProdById.fail:
+        case addProd.fail:
             return {
                 ...state,
                 loading: false,
                 errorMsg: action.error
             };
-        case auth.success:
+        case getAllProds.success:
+        case getProdById.success:
+        case addProd.success:
             return {
                 ...state,
                 loading: false,
-                token: action.payload,
-                errorMsg: "",
-            };
-        case userInfo.success:
-            return {
-                ...state,
-                loading: false,
-                currentUser: action.payload,
+                products: action.payload,
                 errorMsg: "",
             };
         default:
@@ -42,4 +43,4 @@ const AuthReducer = (state = DefaultState, action) => {
     }
 };
 
-export default AuthReducer
+export default GroceryStoreReducer
