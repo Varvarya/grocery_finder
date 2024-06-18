@@ -62,19 +62,13 @@ export const searchGroceryStoreByProduct = (params) => async dispatch => {
             type: getGSByProduct.loading
         });
 
-        const params = {
-            ProductId: '1323r',
-            Latitude: 133,
-            Longitude: 122,
-            Radius: 20,
-            GroceryStoreSearchMode: 1
-        }
+        const reqParams = {...params}
 
-        const res = await api.get(`${baseURL}/GroceryStore/get-all`, {params});
+        const res = await api.get(`${baseURL}/GroceryStore/search-by-product`, {params: reqParams});
 
         dispatch({
             type: getGSByProduct.success,
-            payload: res.data
+            payload: res.data.foundStores
         })
     } catch (e) {
         console.log(getGSByProduct.fail, ' ', e);

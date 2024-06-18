@@ -7,6 +7,7 @@ import { getAllProds, getProdById, addProd } from "../types/productTypes";
 const DefaultState = {
     loading: false,
     products: [],
+    currentProduct: undefined,
     token: '',
     errorMsg: ""
 };
@@ -30,12 +31,18 @@ const ProductReducer = (state = DefaultState, action) => {
                 errorMsg: action.error
             };
         case getAllProds.success:
-        case getProdById.success:
         case addProd.success:
             return {
                 ...state,
                 loading: false,
                 products: action.payload,
+                errorMsg: "",
+            };
+        case getProdById.success:
+            return {
+                ...state,
+                loading: false,
+                currentProduct: action.payload,
                 errorMsg: "",
             };
         default:
