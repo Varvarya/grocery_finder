@@ -16,7 +16,7 @@ function App() {
       <Routes>
           <Route path={"/auth/register"} element={<RegistrationPage />} />
           <Route path={"/auth/login"} element={<LoginPage />} />
-          <Route path={"/"} element={<HomePage />} />
+          <Route exact path={"/"} element={<HomePage />} />
         <Route path={"/pokemon/:pokemon"} element={Pokemon} />
       </Routes>
     </div>

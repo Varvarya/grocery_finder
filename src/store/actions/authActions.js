@@ -2,15 +2,17 @@ import {auth, userInfo} from "../types/authTypes";
 import {baseURL, jwtToken} from "../consts";
 import api from "../api";
 
-export const authUser = (userName, password) => async dispatch => {
+export const authUser = (formValues, userName, password) => async dispatch => {
     try {
         dispatch({
             type: auth.loading
         });
 
+        console.log(formValues);
+
         const res = await api.post(`${baseURL}/Auth/token`, {
-            userName,
-            password
+            userName: formValues.username,
+            password: formValues.password
         });
 
         localStorage.setItem(jwtToken, res.data.token);

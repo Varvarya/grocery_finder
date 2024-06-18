@@ -43,4 +43,4 @@ const ProductReducer = (state = DefaultState, action) => {
     }
 };
 
-export default GroceryStoreReducer
+export default ProductReducer

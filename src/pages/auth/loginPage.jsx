@@ -65,7 +65,7 @@ const LoginPage = (props) => {
         setFormErrors(validate(formValues));
         setIsSubmit(true);
 
-        dispatch(authUser(formValues)).then((res) => {
+        dispatch(authUser(formValues)).then(() => {
             if (!authState.errorMsg) {
                 navigate('/');
             }
