@@ -29,7 +29,7 @@ export const authUser = (formValues, userName, password) => async dispatch => {
     }
 };
 
-export const getCurrentUserInfo = (user) => async dispatch => {
+export const getCurrentUserInfo = () => async dispatch => {
     try {
         dispatch({
             type: userInfo.loading
@@ -39,15 +39,7 @@ export const getCurrentUserInfo = (user) => async dispatch => {
 
         dispatch({
             type: userInfo.success,
-            //payload: res.data,
-            payload: {
-                "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                "userName": "string",
-                "role": "string",
-                "registryDate": "2024-05-28T20:24:23.699Z",
-                "email": "string"
-            },
-            userName: user
+            payload: res.data
         })
     } catch (e) {
         dispatch({

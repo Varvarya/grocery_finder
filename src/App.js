@@ -19,7 +19,7 @@ function App() {
           <Route path={"/auth/register"} element={<RegistrationPage />} />
           <Route path={"/auth/login"} element={<LoginPage />} />
           <Route exact path={"/"} element={<HomePage />} />
-          <Route path={"/user"} element={<UserProfile />} />
+          <Route path={"/profile"} element={<UserProfile />} />
         <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/stores/:id" element={<StorePage />} />
       </Routes>

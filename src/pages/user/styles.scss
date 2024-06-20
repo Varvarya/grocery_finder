@@ -1,6 +1,10 @@
-.prod-container{
+.subscription {
+  color: #ffffff;
+}
+
+.user-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   row-gap: 40px;
   color: #ffffff;
@@ -8,81 +12,4 @@
   flex: 1;
   padding: 60px 200px;
   column-gap: 60px;
-}
-
-.prod-img-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  border-radius: 80px;
-  width: 400px;
-  height: 400px;
-}
-
-.results {
-  display: flex;
-  max-width: 70vw;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 40px;
-}
-
-h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 48px;
-  margin: 10px 0;
-}
-
-h2 {
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 48px;
-  margin: 10px 0;
-}
-
-h3 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 20px;
-  margin: 0;
-  height: 80px
-}
-
-h4 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  margin: 20px 0;
-  color: #3E92CC;
-
-}
-
-.store-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  column-gap: 20px;
-}
-
-h5 {
-  flex: 1;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  margin: 0;
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.price-tag {
-  text-decoration: none;
-  color: #FCFF54
 }

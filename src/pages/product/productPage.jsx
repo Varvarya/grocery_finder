@@ -7,6 +7,8 @@ import {getAllProducts, getProductById} from "../../store/actions/productActions
 import ProductCard from "../../components/cards/Product";
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
 import Button from "../../components/inputs/Button";
+import {addPriceUpdateSubscriptions} from "../../store/actions/priceUpdateActions";
+import {addNewUserAllergy} from "../../store/actions/userAllergyActions";
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -64,7 +66,8 @@ const ProductPage = () => {
                     <h1>{currentProduct.name}</h1>
                     <h3>{currentProduct.description}</h3>
                     <h2>{inStores && inStores.length > 0 && minMax()}</h2>
-                    <Button text='Слідкувати' type='green' handleClick={() => {}} />
+                    <Button text='Слідкувати' type='green' handleClick={() => {dispatch(addPriceUpdateSubscriptions(id))}} />
+                    {/*<Button text='Allergy' handleClick={() => dispatch(addNewUserAllergy(id, currentProduct.allergenType))} />*/}
                     {availability()}
                 </div>
             </div>}

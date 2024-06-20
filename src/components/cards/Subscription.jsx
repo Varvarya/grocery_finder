@@ -3,20 +3,11 @@ import './styles.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
+import {deletePriceUpdateSubscriptionById} from "../../store/actions/priceUpdateActions";
 
-const ProductCard = ({item, storesNeeded = true}) => {
+const SubscriptionCard = ({item, onClick}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const searchRes = useSelector(state => state.GroceryStore.stores);
-
-    useEffect(() => {
-        dispatch(searchGroceryStoreByProduct({ProductId: item.id}))
-    }, []);
-
-    const onClick = () => {
-        navigate(`/product/${item.id}`);
-    }
 
     return(
         <div className='product-card'>
@@ -24,9 +15,9 @@ const ProductCard = ({item, storesNeeded = true}) => {
                 <img src={item.imageUri}/>
             </div>
             <span>{item.name}</span>
-            {storesNeeded && <span>{searchRes.length}</span>}
+            <button onClick={onClick}>Delete</button>
         </div>
     )
 }
 
-export default ProductCard;
+export default SubscriptionCard;

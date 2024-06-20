@@ -40,10 +40,10 @@ const Auth = (props) => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        //dispatch(authUser('123', '123'))
-        dispatch(addNewUser(formValues));
-    }, [isSubmit]);
+    // useEffect(() => {
+    //     //dispatch(authUser('123', '123'))
+    //     dispatch(addNewUser(formValues));
+    // }, [isSubmit]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,7 +53,9 @@ const Auth = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        setIsSubmit(true);
+        dispatch(addNewUser(formValues)).then(() => {
+            dispatch(authUser(formValues));
+        });
     };
 
 

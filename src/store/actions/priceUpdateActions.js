@@ -13,7 +13,7 @@ export const getPriceUpdateSubscriptionById = (id) => async dispatch => {
 
         dispatch({
             type: getPUSById.success,
-            payload: res.data
+            payload: res
         })
     } catch (e) {
         dispatch({

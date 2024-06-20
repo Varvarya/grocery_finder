@@ -29,13 +29,6 @@ export const addNewUser = (user) => async dispatch => {
             type: addUser.loading
         });
 
-        const user = {
-            "userName": "string",
-            "password": "string",
-            "email": "user@example.com",
-            "clientURIForEmailConfirmation": "string"
-        }
-
         const res = await api.post(`${baseURL}/User`, user);
 
         dispatch({
