@@ -9,6 +9,7 @@ import HomePage from "./pages/main/products";
 import NavBar from "./components/navbar/Navbar";
 import ProductPage from "./pages/product/productPage";
 import StorePage from "./pages/groceryStore/storePage";
+import UserProfile from "./pages/user/userProfile";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
           <Route path={"/auth/register"} element={<RegistrationPage />} />
           <Route path={"/auth/login"} element={<LoginPage />} />
           <Route exact path={"/"} element={<HomePage />} />
-        <Route path={"/pokemon/:pokemon"} element={Pokemon} />
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path={"/user"} element={<UserProfile />} />
+        <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/stores/:id" element={<StorePage />} />
       </Routes>
     </div>

@@ -3,10 +3,7 @@ import SearchBar from "../../components/inputs/SearchBar";
 import {useSelector, useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 import './styles.scss'
-import {getAllProducts, getProductById} from "../../store/actions/productActions";
-import ProductCard from "../../components/cards/Product";
-import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
-import Button from "../../components/inputs/Button";
+import {maps} from "../../store/consts";
 
 const StorePage = () => {
     const dispatch = useDispatch();
@@ -29,15 +26,24 @@ const StorePage = () => {
             {store &&
                 <div className='prod-container'>
                     <div className='map-img-container'>
-                        <img className='img' src={store.groceryStore.logoImageUri}/>
+                        <iframe
+                            src={maps[store.groceryStore.id]}
+                            className='frame'
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"/>
                     </div>
-                    <div>
-                        <div>
-
-                            <h1>{store.groceryStore.name}</h1>
-                            <h2>{store.groceryStore.workFrom} - {store.groceryStore.workTo}</h2>
-                            <h4>{store.groceryStore.street}</h4>
-                        </div>
+                    <div className='store-desc-container'>
+                            <div className='row'>
+                                <div className='store-logo'>
+                                    <img className='img' src={store.groceryStore.logoImageUri}/>
+                                </div>
+                                <div className='column'>
+                                    <h1>{store.groceryStore.name}</h1>
+                                    <h6>{store.groceryStore.workFrom} - {store.groceryStore.workTo}</h6>
+                                    <h7>{store.groceryStore.street}</h7>
+                                </div>
+                            </div>
                         <h3>{store.groceryStore.description}</h3>
                     </div>
                 </div>}

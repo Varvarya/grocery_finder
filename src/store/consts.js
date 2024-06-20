@@ -74,3 +74,7 @@ export const products = [
         "allergenType": 12
     }
 ]
+
+export const maps = {
+    '08dc729b-dc73-45b9-8d53-c22680105ca4': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1283.440847501446!2d36.31535833259485!3d49.957321697610766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41270a56b41bdfc5%3A0xe98de59453121f05!2sATB-Market!5e0!3m2!1sen!2sua!4v1718914116046!5m2!1sen!2sua'
+}
