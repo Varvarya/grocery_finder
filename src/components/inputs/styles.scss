@@ -38,13 +38,14 @@
    cursor: pointer;
    font-weight: 500;
    border: 1px solid transparent;
-   border-radius: 2px;
-   height: 36px;
+   border-radius: 30px;
+   height: 60px;
    line-height: 34px;
    font-size: 14px;
    color: #ffffff;
    background-color: #007c89;
     padding: 0 18px;
+
   text-align: center;
    :hover {
      color: #ffffff;
@@ -56,6 +57,13 @@
   color: #007c89;
   background-color: #ffffff;
   border: 1px solid #006570;
+}
+
+.green {
+  background-color: #18D183;
+  color: #1E1E1E;
+  width: 360px;
+  font-size: 20px;
 }
 
 .search {

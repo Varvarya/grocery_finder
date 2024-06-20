@@ -5,8 +5,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import './styles.scss'
 import {getAllProducts, getProductById} from "../../store/actions/productActions";
 import ProductCard from "../../components/cards/Product";
-import Pagination from "../../components/pagination/Pagination";
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
+import Button from "../../components/inputs/Button";
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -35,16 +35,38 @@ const ProductPage = () => {
         return min+' - '+max;
     }
 
+    const availability = () => {
+        return (
+            <div className='availability'>
+                <h4>Наявно в {inStores.length} магазинах</h4>
+                {
+                    inStores.map((el) =>
+                        <div key={el.groceryStore.id} className='store-info' onClick={() => navigate(`/stores/${el.groceryStore.id}`)}>
+                            <h5>{el.groceryStore.name}</h5>
+                            <h5 className='price-tag'>{el.price}</h5>
+                        </div>
+                    )
+                }
+            </div>
+        )
+    }
+
 
     return (
-        <div className='container'>
-            {currentProduct && <ProductCard item={currentProduct} />}
+        <div>
             {currentProduct &&
-            <div>
-                <img src={currentProduct.imageUri}/>
-                <h1>{currentProduct.name}</h1>
-                <h3>{currentProduct.description}</h3>
-                <h2>{minMax()}</h2>
+            <div className='prod-container'>
+                <div className='prod-img-container'>
+
+                    <img src={currentProduct.imageUri}/>
+                </div>
+                <div>
+                    <h1>{currentProduct.name}</h1>
+                    <h3>{currentProduct.description}</h3>
+                    <h2>{inStores && inStores.length > 0 && minMax()}</h2>
+                    <Button text='Слідкувати' type='green' handleClick={() => {}} />
+                    {availability()}
+                </div>
             </div>}
         </div>
     )

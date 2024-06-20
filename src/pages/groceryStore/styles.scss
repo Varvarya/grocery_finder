@@ -10,7 +10,7 @@
   column-gap: 60px;
 }
 
-.prod-img-container {
+.map-img-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +18,11 @@
   border-radius: 80px;
   width: 400px;
   height: 400px;
+  overflow: hidden;
+}
+
+.img {
+  object-fit: contain;
 }
 
 .results {
@@ -37,12 +42,12 @@ h1 {
 }
 
 h2 {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-size: 48px;
-  margin: 10px 0;
+  font-size: 24px;
+  color: #3E92CC;
 }
 
 h3 {
@@ -50,16 +55,16 @@ h3 {
   font-weight: 200;
   font-style: normal;
   font-size: 20px;
-  margin: 0;
-  height: 80px
+  margin: 20px 0;
+  height: 80px;
 }
 
 h4 {
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   font-size: 16px;
-  margin: 20px 0;
+  margin: 0;
   color: #3E92CC;
 
 }
