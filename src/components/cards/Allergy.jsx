@@ -5,19 +5,16 @@ import {useNavigate} from 'react-router-dom';
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
 import {deletePriceUpdateSubscriptionById} from "../../store/actions/priceUpdateActions";
 
-const SubscriptionCard = ({item, onClick, openPage}) => {
+const AllergyCard = ({item, onClick}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     return(
-        <div className='product-card'>
-            <div className='card-image' onClick={openPage.bind(this)}>
-                <img src={item.imageUri}/>
-            </div>
-            <span>{item.name}</span>
+        <div className='row'>
+            <span>{item.notes}</span>
             <button onClick={onClick} className='red'>Видалити</button>
         </div>
     )
 }
 
-export default SubscriptionCard;
+export default AllergyCard;

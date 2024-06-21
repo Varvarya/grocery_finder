@@ -8,6 +8,7 @@ import ProductCard from "../../components/cards/Product";
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
 import Button from "../../components/inputs/Button";
 import {addPriceUpdateSubscriptions} from "../../store/actions/priceUpdateActions";
+import Filter from './Filter.png';
 import {addNewUserAllergy} from "../../store/actions/userAllergyActions";
 
 const ProductPage = () => {
@@ -40,7 +41,10 @@ const ProductPage = () => {
     const availability = () => {
         return (
             <div className='availability'>
-                <h4>Наявно в {inStores.length} магазинах</h4>
+                <div className='row'>
+                    <h4>Наявно в {inStores.length} магазинах</h4>
+                    <img src={Filter} className='filter' />
+                </div>
                 {
                     inStores.map((el) =>
                         <div key={el.groceryStore.id} className='store-info' onClick={() => navigate(`/stores/${el.groceryStore.id}`)}>
@@ -59,8 +63,7 @@ const ProductPage = () => {
             {currentProduct &&
             <div className='prod-container'>
                 <div className='prod-img-container'>
-
-                    <img src={currentProduct.imageUri}/>
+                    <img className='prod-img' src={currentProduct.imageUri}/>
                 </div>
                 <div>
                     <h1>{currentProduct.name}</h1>

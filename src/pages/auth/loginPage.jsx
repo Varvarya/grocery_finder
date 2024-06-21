@@ -6,6 +6,8 @@ import AuthForm from "../../components/AuthForm";
 import {addNewUser} from "../../store/actions/userActions";
 import Button from "../../components/inputs/Button";
 import {useNavigate} from "react-router-dom";
+import {jwtToken} from "../../store/consts";
+import {isNull} from "lodash";
 
 
 const validate = (values) => {
@@ -25,9 +27,6 @@ const validate = (values) => {
         errors.password = "Password must be more than 4 characters";
     } else if (values.password.length > 10) {
         errors.password = "Password cannot exceed more than 10 characters";
-    } else if (values.password !== values.repeatedPassword) {
-
-        errors.password = "You need to repeat password";
     }
 
     return errors;
@@ -45,16 +44,6 @@ const LoginPage = (props) => {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
-    //
-    // useEffect(() => {
-    //     //dispatch(authUser('123', '123'))
-    //     dispatch(authUser(formValues)).then((res) => {
-    //         console.log(res);
-    //         //navigate('/');
-    //     });
-    // }, [isSubmit]);
-
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
@@ -66,7 +55,10 @@ const LoginPage = (props) => {
         setIsSubmit(true);
 
         dispatch(authUser(formValues)).then(() => {
-            if (!authState.errorMsg) {
+            const token = localStorage.getItem(jwtToken);
+
+            if (token !== null && !isNull(token)) {
+                console.log(token);
                 navigate('/');
             }
         });
@@ -76,14 +68,15 @@ const LoginPage = (props) => {
     return(
         <div className="baseContainer">
            <AuthForm
+               title='Авторизація'
                values={formValues}
                errors={formErrors}
                handleChange={handleChange.bind(this)}
                handleSubmit={handleSubmit}
                isSubmit={isSubmit}
            >
-               <Button text={'Submit'} handleClick={handleSubmit}></Button>
-               <Button text={'Login'} type='secondary' handleClick={() => navigate(`/auth/register`)}></Button>
+               <Button text={'Увійти'} handleClick={handleSubmit}></Button>
+               <Button text={'Зареєструватися'} type='secondary' handleClick={() => navigate(`/auth/register`)}></Button>
            </AuthForm>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import './styles.scss'
 
-const SearchBar = ({items}) => {
+const SearchBar = ({items, onSelect}) => {
     const styles = {
         backgroundColor: '#172F4A',
         border: '3px solid #205173',
@@ -18,7 +18,8 @@ const SearchBar = ({items}) => {
             <ReactSearchAutocomplete
                 items={items}
                 styling={styles}
-                placeholder={'Search'}
+                placeholder={'Шукати...'}
+                onSelect={onSelect}
             />
         </div>
     );

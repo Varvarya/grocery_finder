@@ -19,14 +19,16 @@ const HomePage = () => {
         dispatch(getAllProducts())
     }, [searchValue]);
 
+    const onSelect = (el) => {
+        navigate(`/product/${el.id}`);
+    }
 
 
     return (
         <div className='container'>
-            <SearchBar value={searchValue} setValue={setSearchValue} items={availableProducts}/>
+            <SearchBar value={searchValue} setValue={setSearchValue} items={availableProducts} onSelect={onSelect}/>
             <div className='results'>
                 <Pagination items={availableProducts} itemsPerPage={4} />
-                {/*{products.map((el) => <ProductCard item={el} /> )}*/}
             </div>
         </div>
     )

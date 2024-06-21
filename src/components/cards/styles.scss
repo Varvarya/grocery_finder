@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
   row-gap: 10px;
   margin-bottom: 20px;
 
@@ -23,9 +22,14 @@
   border-radius: 40px;
 
   img {
+    object-fit: cover;
     align-self: center;
     width:70%;
     height: 70%
   }
+}
+
+.red {
+  background-color: #ec3838;
 }
 

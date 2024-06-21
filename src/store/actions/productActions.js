@@ -32,7 +32,7 @@ export const getProductById = (id) => async dispatch => {
 
         dispatch({
             type: getProdById.success,
-            payload: products[0]
+            payload: res.data
         })
     } catch (e) {
         dispatch({

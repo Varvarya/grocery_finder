@@ -2,13 +2,13 @@
 .input_field{
   display: flex;
   flex: 1;
-  padding: 0 8px;
+  padding: 12px 20px;
   margin: 8px 0;
   vertical-align: middle;
-  border-radius: 2px;
+  border-radius: 30px;
   min-height: 36px;
   background-color: #ffffff;
-  border: 1px solid rgba(36,28,21,0.3);
+  border: 3px solid #3E92CC;
   transition: all 0.2s ease-in-out 0s;
   font-size: 16px;
   line-height: 18px;
@@ -43,18 +43,18 @@
    line-height: 34px;
    font-size: 14px;
    color: #ffffff;
-   background-color: #007c89;
-    padding: 0 18px;
+   background-color: #3E92CC;
+    padding: 4x 18px;
 
   text-align: center;
    :hover {
      color: #ffffff;
-     background-color: #006570;
+     background-color: #164d71;
    }
  }
 
 .secondary {
-  color: #007c89;
+  color: #3E92CC;
   background-color: #ffffff;
   border: 1px solid #006570;
 }

@@ -15,12 +15,19 @@ export const authUser = (formValues, userName, password) => async dispatch => {
             password: formValues.password
         });
 
-        localStorage.setItem(jwtToken, res.data.token);
+        if (!res.data.isAuthorized) {
+            localStorage.removeItem(jwtToken);
+            dispatch({
+                type: auth.fail,
+            })
+        } else {
+            localStorage.setItem(jwtToken, res.data.token);
 
-        dispatch({
-            type: auth.success,
-            payload: res.data
-        })
+            dispatch({
+                type: auth.success,
+                payload: res.data
+            })
+        }
     } catch (e) {
         console.log('AUTHENTICATION_FAIL ', e);
         dispatch({

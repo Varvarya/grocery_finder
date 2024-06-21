@@ -8,13 +8,17 @@
 }
 
 .menu {
+  font-family: "Limelight", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 48px;
   background-color: #3E92CC;
   display: flex;
   flex: 1;
-  max-width: 400px;
+  max-width: 500px;
   height: 100%;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: right;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
 }

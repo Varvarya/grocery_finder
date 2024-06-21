@@ -16,8 +16,21 @@
   justify-content: center;
   background-color: #ffffff;
   border-radius: 80px;
-  width: 400px;
-  height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+
+  min-width: 400px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.prod-img {
+  max-width: 400px;
+  max-height: 400px;
+
+  min-width: 400px;
+  min-height: 400px;
+  object-fit: contain;
 }
 
 .results {
@@ -85,4 +98,9 @@ h5 {
 .price-tag {
   text-decoration: none;
   color: #FCFF54
+}
+
+.filter {
+  width: 32px;
+  height: 32px
 }

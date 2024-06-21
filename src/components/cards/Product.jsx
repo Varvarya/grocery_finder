@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchGroceryStoreByProduct} from "../../store/actions/groceryStoreActions";
 
-const ProductCard = ({item, storesNeeded = true}) => {
+const ProductCard = ({item, onClick, storesNeeded = true}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,17 +14,12 @@ const ProductCard = ({item, storesNeeded = true}) => {
         dispatch(searchGroceryStoreByProduct({ProductId: item.id}))
     }, []);
 
-    const onClick = () => {
-        navigate(`/product/${item.id}`);
-    }
-
     return(
         <div className='product-card'>
-            <div className='card-image' onClick={onClick.bind(this)}>
+            <div className='card-image' onClick={() => onClick(item)}>
                 <img src={item.imageUri}/>
             </div>
             <span>{item.name}</span>
-            {storesNeeded && <span>{searchRes.length}</span>}
         </div>
     )
 }

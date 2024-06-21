@@ -23,8 +23,10 @@
   justify-content: center;
   background-color: #ffffff;
   border-radius: 40px;
-  width: 400px;
-  height: 400px;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 400px;
+  max-height: 400px;
   overflow: hidden;
 }
 

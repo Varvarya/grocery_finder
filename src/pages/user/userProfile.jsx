@@ -11,6 +11,8 @@ import {deletePriceUpdateSubscriptionById, getPriceUpdateSubscriptions} from "..
 import SubscriptionCard from "../../components/cards/Subscription";
 import {deleteUserAllergyById, getAllUserAllergies} from "../../store/actions/userAllergyActions";
 import {getCurrentUserInfo} from "../../store/actions/authActions";
+import AllergyCard from "../../components/cards/Allergy";
+import moment from "moment";
 
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -32,26 +34,39 @@ const UserProfile = () => {
 
     return (
         <div className='user-container'>
-            {JSON.stringify(user)}
-            {subscriptions.length > 0 && subscriptions.map((sub) =>
+            {user &&
                 <>
-                <h1>Subscriptions</h1>
+                    <h3 className='user-text'>{`Ім'я користувача: ${user.userName}`}</h3>
+                    <h3 className='user-text'>{`E-mail: ${user.email}`}</h3>
+                    <h3 className='user-text'>{`Дата реєстрація: ${ moment.utc(user.registryDate).local().format('DD/MM/YYYY')}`}</h3>
+                </>
+            }
+            <div className='content-aligner'>
+            <div className='user-column'>
+                {subscriptions.length > 0 && <h1>Підписки</h1>}
+
+                <div className='subscriptions'>
+                {subscriptions.length > 0 && subscriptions.map((sub) =>
+
                 <SubscriptionCard
                 item={sub.product}
                     onClick={() => dispatch(deletePriceUpdateSubscriptionById(sub.id))}
-                />
-                </>)}
-            {products.length > 0 && allergies.length > 0 && allergies.map((allergy) => {
-                const prod = products.find((el) => el.id == allergy.id);
-                console.log(prod);
+                openPage={() =>  navigate(`/product/${sub.product.id}`)}
+                    />)}
+                </div>
+            </div>
 
-                return (prod && <SubscriptionCard
-                    item={prod}
+            <div className='user-column'>
+                {subscriptions.length > 0 && <h1>Алергії</h1>}
+            {products.length > 0 && allergies.length > 0 && allergies.map((allergy) => {
+                return (allergy && <AllergyCard
+                    item={allergy}
                     onClick={() => dispatch(deleteUserAllergyById(allergy.id))}
                 />)
             })
                 }
-            <Button text='Слідкувати' type='green' handleClick={() => {}} />
+            </div>
+            </div>
         </div>
     )
 }

@@ -13,3 +13,32 @@
   padding: 60px 200px;
   column-gap: 60px;
 }
+
+.subscriptions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.user-text {
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+.content-aligner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.user-column {
+  display: flex;
+  flex: 1;
+  min-width: 40vw;
+ flex-direction: column;
+}

@@ -62,6 +62,7 @@ const Auth = (props) => {
     return(
         <div className="baseContainer">
            <AuthForm
+               title='Реєстрація'
                values={formValues}
                errors={formErrors}
                handleChange={handleChange.bind(this)}
@@ -69,8 +70,8 @@ const Auth = (props) => {
                isSubmit={isSubmit}
                extended
            >
-               <Button text={'Submit'} handleClick={handleSubmit}></Button>
-               <Button text={'Login'} type='secondary' handleClick={() => navigate(`/auth/login`)}></Button>
+               <Button text={'Зареєструватися'} handleClick={handleSubmit}></Button>
+               <Button text={'Увійти'} type='secondary' handleClick={() => navigate(`/auth/login`)}></Button>
            </AuthForm>
         </div>
     )

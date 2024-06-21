@@ -6,10 +6,22 @@
   justify-content: center;
   flex-wrap: nowrap;
   row-gap: 20px;
+  min-width: 50vw;
 }
 
 .buttons {
   display: flex;
+  flex: 1;
   flex-direction: row;
   column-gap: 8px;
+}
+
+.title_container {
+  color: #ffffff;
+}
+
+.form{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
